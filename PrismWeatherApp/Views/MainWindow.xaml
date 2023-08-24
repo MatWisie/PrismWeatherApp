@@ -10,41 +10,11 @@
         Background="#cddef7">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Rectangle HorizontalAlignment="Stretch"
-                   Height="5"
-                   Fill="Aqua"
-                   VerticalAlignment="Bottom"
-                   Margin="0 0 0 20" />
-
-        <Button Background="Aqua"
-                VerticalAlignment="Bottom"
-                HorizontalAlignment="Center"
-                Height="70"
-                Width="150">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius"
-                            Value="40 40 0 0" />
-                </Style>
-            </Button.Resources>
-        </Button>
-        <Button Width="50"
-                Height="50"
-                Background="Aqua"
-                Margin="300 0 0 0" 
-                VerticalAlignment="Bottom"/>  
-        
-        <Button Width="50"
-                Height="50"
-                Background="Aqua"
-                Margin="500 0 0 0" 
-                VerticalAlignment="Bottom"/>
-        <Grid Grid.Row="1"
-              Background="#d5e3f7"></Grid>
+        <ContentControl prism:RegionManager.RegionName="MenuRegion" />
         <ContentControl prism:RegionManager.RegionName="ContentRegion" />
     </Grid>
 </Window>
