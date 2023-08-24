@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismWeatherApp.Core", "Pri
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismWeatherApp.Menu", "PrismWeatherApp.Menu\PrismWeatherApp.Menu.csproj", "{2DCBD2A9-60D4-426F-9BE4-258E772DBEBC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismWeatherApp.Search", "PrismWeatherApp.Search\PrismWeatherApp.Search.csproj", "{8417D255-3A17-4BF4-BD81-362A81850A61}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{2DCBD2A9-60D4-426F-9BE4-258E772DBEBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DCBD2A9-60D4-426F-9BE4-258E772DBEBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DCBD2A9-60D4-426F-9BE4-258E772DBEBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8417D255-3A17-4BF4-BD81-362A81850A61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8417D255-3A17-4BF4-BD81-362A81850A61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8417D255-3A17-4BF4-BD81-362A81850A61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8417D255-3A17-4BF4-BD81-362A81850A61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
