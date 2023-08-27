@@ -1,12 +1,10 @@
 ﻿using Prism.Ioc;
+using Prism.Modularity;
 using Prism.Unity;
+using PrismWeatherApp.Menu;
+using PrismWeatherApp.Search;
+using PrismWeatherApp.Temperature;
 using PrismWeatherApp.Views;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace PrismWeatherApp
@@ -23,7 +21,13 @@ namespace PrismWeatherApp
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            
+
+        }
+        protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
+        {
+            moduleCatalog.AddModule<MenuModule>();
+            moduleCatalog.AddModule<TemperatureModule>();
+            moduleCatalog.AddModule<SearchModule>();
         }
     }
 }
