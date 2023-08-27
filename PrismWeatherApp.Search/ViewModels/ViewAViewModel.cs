@@ -42,6 +42,13 @@ namespace PrismWeatherApp.Search.ViewModels
             }
         }
 
+        private City selectedCity;
+
+        public City SelectedCity
+        {
+            get { return selectedCity; }
+            set { selectedCity = value; }
+        }
 
     }
 }
