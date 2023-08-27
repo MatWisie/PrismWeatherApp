@@ -1,25 +1,33 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Prism.Mvvm;
+using PrismWeatherApp.Core.Models;
+using PrismWeatherApp.Search.Interfaces;
+using System.Collections.ObjectModel;
 
 namespace PrismWeatherApp.Search.ViewModels
 {
     public class ViewAViewModel : BindableBase
     {
-        private string _message;
-        public string Message
+        private readonly ISearchApiService _searchApiService;
+        public ViewAViewModel(ISearchApiService searchApiService)
         {
-            get { return _message; }
-            set { SetProperty(ref _message, value); }
+            _searchApiService = searchApiService;
         }
 
-        public ViewAViewModel()
+        public ObservableCollection<City> Cities
         {
-            Message = "View A from your Prism Module";
+            get
+            {
+                var tmpCities = _searchApiService.GetCities(CityText).Result;
+                if (tmpCities == null || tmpCities.Results == null || tmpCities.Results.Count == 0)
+                {
+                    return new ObservableCollection<City>();
+                }
+                CityDropDownOpen = true;
+                return new ObservableCollection<City>(tmpCities.Results);
+            }
         }
+
+
+
     }
 }
