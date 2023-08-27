@@ -27,6 +27,20 @@ namespace PrismWeatherApp.Search.ViewModels
             }
         }
 
+        private string cityText;
+        public string CityText
+        {
+            get
+            {
+                return cityText;
+            }
+            set
+            {
+                SetProperty(ref cityText, value);
+                RaisePropertyChanged(nameof(Cities));
+
+            }
+        }
 
 
     }
