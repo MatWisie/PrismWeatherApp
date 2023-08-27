@@ -50,5 +50,18 @@ namespace PrismWeatherApp.Search.ViewModels
             set { selectedCity = value; }
         }
 
+        private bool cityDropDownOpen;
+
+        public bool CityDropDownOpen
+        {
+            get { return cityDropDownOpen; ; }
+            set
+            {
+                SetProperty(ref cityDropDownOpen, value);
+            }
+        }
+
+
+
     }
 }
