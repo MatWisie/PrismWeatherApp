@@ -1,6 +1,8 @@
 ﻿using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Unity;
+using PrismWeatherApp.Core;
+using PrismWeatherApp.Core.Interfaces;
 using PrismWeatherApp.Menu;
 using PrismWeatherApp.Search;
 using PrismWeatherApp.Temperature;
@@ -21,7 +23,7 @@ namespace PrismWeatherApp
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-
+            containerRegistry.RegisterSingleton<IAppCommands, AppCommands>();
         }
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
