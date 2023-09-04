@@ -1,4 +1,7 @@
-﻿using Prism.Mvvm;
+﻿using Prism.Commands;
+using Prism.Mvvm;
+using PrismWeatherApp.Core;
+using PrismWeatherApp.Core.Interfaces;
 using PrismWeatherApp.Core.Models;
 using PrismWeatherApp.Search.Interfaces;
 using System.Collections.ObjectModel;
@@ -19,7 +22,26 @@ namespace PrismWeatherApp.Search.ViewModels
         {
             _searchApiService = searchApiService;
             AppCommands = appCommands;
+            SearchCommand = new DelegateCommand(Search);
+            _appCommands.GlobalSearchCommand.RegisterCommand(SearchCommand);
         }
+
+        #region commands
+        public DelegateCommand SearchCommand { get; private set; }
+        private void Search()
+        {
+            if (SelectedCity != null)
+            {
+                var tmpTemperature = _searchApiService.GetTemperature(SelectedCity.latitude, SelectedCity.longitude).Result;
+                TemperatureStatic.CityName = SelectedCity.name;
+                TemperatureStatic.Latitiude = tmpTemperature.Latitiude;
+                TemperatureStatic.Longitiude = tmpTemperature.Longitiude;
+                TemperatureStatic.Hourly = tmpTemperature.Hourly;
+
+            }
+        }
+
+        #endregion
 
         public ObservableCollection<City> Cities
         {
