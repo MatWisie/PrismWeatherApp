@@ -28,7 +28,11 @@ namespace PrismWeatherApp.Search.Services
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Wystąpił błąd: {ex.Message}");
+                    Console.WriteLine($"Error occured: {ex.Message}");
+                    return null;
+                }
+            }
+        }
                     return null;
                 }
             }
