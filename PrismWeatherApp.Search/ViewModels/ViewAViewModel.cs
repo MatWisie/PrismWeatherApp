@@ -8,9 +8,17 @@ namespace PrismWeatherApp.Search.ViewModels
     public class ViewAViewModel : BindableBase
     {
         private readonly ISearchApiService _searchApiService;
-        public ViewAViewModel(ISearchApiService searchApiService)
+        private IAppCommands _appCommands;
+        public IAppCommands AppCommands
+        {
+            get { return _appCommands; }
+            set { SetProperty(ref _appCommands, value); }
+        }
+
+        public ViewAViewModel(ISearchApiService searchApiService, IAppCommands appCommands)
         {
             _searchApiService = searchApiService;
+            AppCommands = appCommands;
         }
 
         public ObservableCollection<City> Cities
