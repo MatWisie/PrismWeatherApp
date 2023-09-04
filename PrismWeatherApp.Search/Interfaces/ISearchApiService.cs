@@ -7,5 +7,6 @@ namespace PrismWeatherApp.Search.Interfaces
     public interface ISearchApiService
     {
         Task<CitiesResult> GetCities(string city);
+        Task<Temperature> GetTemperature(double latitiude, double longitiude);
     }
 }
