@@ -1,25 +1,97 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using PrismWeatherApp.Core;
+using PrismWeatherApp.Core.Interfaces;
+using PrismWeatherApp.Core.Models;
+using System.Collections.ObjectModel;
 
 namespace PrismWeatherApp.Search.ViewModels
 {
     public class ViewAViewModel : BindableBase
     {
-        private string _message;
-        public string Message
+        private readonly ISearchApiService _searchApiService;
+        private IAppCommands _appCommands;
+        public IAppCommands AppCommands
         {
-            get { return _message; }
-            set { SetProperty(ref _message, value); }
+            get { return _appCommands; }
+            set { SetProperty(ref _appCommands, value); }
         }
 
-        public ViewAViewModel()
+        public ViewAViewModel(ISearchApiService searchApiService, IAppCommands appCommands)
         {
-            Message = "View A from your Prism Module";
+            _searchApiService = searchApiService;
+            AppCommands = appCommands;
+            SearchCommand = new DelegateCommand(Search);
+            _appCommands.GlobalSearchCommand.RegisterCommand(SearchCommand);
         }
+
+        #region commands
+        public DelegateCommand SearchCommand { get; private set; }
+        private void Search()
+        {
+            if (SelectedCity != null)
+            {
+                var tmpTemperature = _searchApiService.GetTemperature(SelectedCity.latitude, SelectedCity.longitude).Result;
+                TemperatureStatic.CityName = SelectedCity.name;
+                TemperatureStatic.Latitiude = tmpTemperature.latitude;
+                TemperatureStatic.Longitiude = tmpTemperature.longitude;
+                TemperatureStatic.Hourly = tmpTemperature.hourly;
+                JsonServices.SaveJson(SelectedCity);
+
+            }
+        }
+
+        #endregion
+
+        public ObservableCollection<City> Cities
+        {
+            get
+            {
+                var tmpCities = _searchApiService.GetCities(CityText).Result;
+                if (tmpCities == null || tmpCities.Results == null || tmpCities.Results.Count == 0)
+                {
+                    return new ObservableCollection<City>();
+                }
+                CityDropDownOpen = true;
+                return new ObservableCollection<City>(tmpCities.Results);
+            }
+        }
+
+        private string cityText;
+        public string CityText
+        {
+            get
+            {
+                return cityText;
+            }
+            set
+            {
+                SetProperty(ref cityText, value);
+                RaisePropertyChanged(nameof(Cities));
+
+            }
+        }
+
+        private City selectedCity;
+
+        public City SelectedCity
+        {
+            get { return selectedCity; }
+            set { selectedCity = value; }
+        }
+
+        private bool cityDropDownOpen;
+
+        public bool CityDropDownOpen
+        {
+            get { return cityDropDownOpen; ; }
+            set
+            {
+                SetProperty(ref cityDropDownOpen, value);
+            }
+        }
+
+
+
     }
 }

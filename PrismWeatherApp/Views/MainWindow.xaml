@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PrismWeatherApp.Views"
         xmlns:prism="http://prismlibrary.com/"
+        xmlns:core="clr-namespace:PrismWeatherApp.Core;assembly=PrismWeatherApp.Core"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         Background="#cddef7">
@@ -14,7 +15,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <ContentControl prism:RegionManager.RegionName="MenuRegion" />
-        <ContentControl prism:RegionManager.RegionName="ContentRegion" />
+        <ContentControl prism:RegionManager.RegionName="{x:Static core:RegionNames.MenuRegion}" />
+        <ContentControl Grid.Row="1" prism:RegionManager.RegionName="{x:Static core:RegionNames.ContentRegion}" />
     </Grid>
 </Window>
