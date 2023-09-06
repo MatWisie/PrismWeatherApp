@@ -23,5 +23,26 @@ namespace PrismWeatherApp.Core
                 return false;
             }
         }
+        public static T LoadJson<T>(string path)
+        {
+            if (path == null)
+            {
+                throw new ArgumentNullException();
+            }
+            if (System.IO.File.Exists(path))
+            {
+                string json = System.IO.File.ReadAllText(path);
+                T result = JsonConvert.DeserializeObject<T>(json);
+                if (result != null)
+                {
+                    return result;
+                }
+                throw new NullReferenceException();
+            }
+            else
+            {
+                throw new FileNotFoundException();
+            }
+        }
     }
 }
