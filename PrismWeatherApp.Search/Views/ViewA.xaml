@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:PrismWeatherApp.Search.Views"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              xmlns:prism="http://prismlibrary.com/"
@@ -16,6 +17,12 @@
                   Text="{Binding CityText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding SelectedCity, UpdateSourceTrigger=PropertyChanged}"
                   IsDropDownOpen="{Binding CityDropDownOpen}"
-                  VerticalAlignment="Center"/>
+                  VerticalAlignment="Center">
+            <b:Interaction.Triggers>
+                <b:KeyTrigger Key="Return">
+                    <b:InvokeCommandAction Command="{Binding AppCommands.GlobalSearchCommand}" />
+                </b:KeyTrigger>
+            </b:Interaction.Triggers>
+        </ComboBox>
     </Grid>
 </UserControl>
