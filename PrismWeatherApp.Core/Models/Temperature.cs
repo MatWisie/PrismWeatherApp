@@ -4,6 +4,6 @@
     {
         public float latitude { get; set; }
         public float longitude { get; set; }
-        public TemperatureHourly hourly { get; set; }
+        public TemperatureHourlyRaw hourly { get; set; }
     }
 }
