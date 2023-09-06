@@ -13,6 +13,32 @@ namespace PrismWeatherApp.HourlyTemperature.ViewModels
         public ViewAViewModel(IAppCommands appCommands)
         {
             _appCommands = appCommands;
+            ReloadHourlyTemp();
+            ReloadHourlyTempCommand = new DelegateCommand(ReloadHourlyTemp);
+            _appCommands.GlobalSearchCommand.RegisterCommand(ReloadHourlyTempCommand);
+
         }
+
+        private string cityName;
+        public string CityName
+        {
+            get
+            {
+                return cityName;
+            }
+            set
+            {
+                SetProperty(ref cityName, value);
+            }
+        }
+        public ObservableCollection<TemperatureHourlyConnect> Hourly { get; set; }
+
+        public DelegateCommand ReloadHourlyTempCommand { get; private set; }
+        private void ReloadHourlyTemp()
+        {
+            CityName = TemperatureStatic.CityName;
+            Hourly = TemperatureStatic.Hourly;
+        }
+
     }
 }
