@@ -1,11 +1,8 @@
 ﻿using Newtonsoft.Json;
+using PrismWeatherApp.Core.Interfaces;
 using PrismWeatherApp.Core.Models;
-using PrismWeatherApp.Search.Interfaces;
-using System;
-using System.Net.Http;
-using System.Threading.Tasks;
 
-namespace PrismWeatherApp.Search.Services
+namespace PrismWeatherApp.Core
 {
     public class SearchApiService : ISearchApiService
     {
@@ -33,13 +30,16 @@ namespace PrismWeatherApp.Search.Services
                 }
             }
         }
-        public async Task<Temperature> GetTemperature(double latitiude, double longitiude)
+        public async Task<Temperature> GetTemperature(float latitiude, float longitiude)
         {
             using (HttpClient httpClient = new HttpClient())
             {
                 try
                 {
-                    var response = await httpClient.GetAsync($"https://api.open-meteo.com/v1/forecast?latitude={latitiude}&longitude={longitiude}&hourly=temperature_2m").ConfigureAwait(false);
+                    string latitiudeString = latitiude.ToString().Replace(",", ".");
+                    string longitiudeString = longitiude.ToString().Replace(",", ".");
+
+                    var response = await httpClient.GetAsync($"https://api.open-meteo.com/v1/forecast?latitude={latitiudeString}&longitude={longitiudeString}&hourly=temperature_2m").ConfigureAwait(false);
                     response.EnsureSuccessStatusCode();
 
                     string jsonContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -54,3 +54,4 @@ namespace PrismWeatherApp.Search.Services
             }
         }
     }
+}
