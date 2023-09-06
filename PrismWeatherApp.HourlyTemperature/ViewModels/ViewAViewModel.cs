@@ -9,5 +9,10 @@ namespace PrismWeatherApp.HourlyTemperature.ViewModels
 {
     public class ViewAViewModel : BindableBase
     {
+        private readonly IAppCommands _appCommands;
+        public ViewAViewModel(IAppCommands appCommands)
+        {
+            _appCommands = appCommands;
+        }
     }
 }
