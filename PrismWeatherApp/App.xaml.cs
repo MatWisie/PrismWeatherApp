@@ -24,6 +24,7 @@ namespace PrismWeatherApp
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterSingleton<IAppCommands, AppCommands>();
+            containerRegistry.Register<ISearchApiService, SearchApiService>();
         }
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
