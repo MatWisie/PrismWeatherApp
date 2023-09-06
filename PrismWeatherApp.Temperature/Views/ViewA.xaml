@@ -10,13 +10,12 @@
              prism:ViewModelLocator.AutoWireViewModel="True" >
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition  Height="50" />
+            <RowDefinition />
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <StackPanel>
-            <ContentControl prism:RegionManager.RegionName="{x:Static core:RegionNames.SearchRegion}" />
-            <ContentControl prism:RegionManager.RegionName="{x:Static core:RegionNames.HourlyTemperatureRegion}" />
-        </StackPanel>
+        <ContentControl prism:RegionManager.RegionName="{x:Static core:RegionNames.SearchRegion}" />
+        <ContentControl prism:RegionManager.RegionName="{x:Static core:RegionNames.HourlyTemperatureRegion}"
+                        Grid.Row="1" />
     </Grid>
 </UserControl>
