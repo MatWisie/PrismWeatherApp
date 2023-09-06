@@ -2,8 +2,7 @@
 using Prism.Modularity;
 using Prism.Regions;
 using PrismWeatherApp.Core;
-using PrismWeatherApp.Search.Interfaces;
-using PrismWeatherApp.Search.Services;
+using PrismWeatherApp.Core.Interfaces;
 using PrismWeatherApp.Search.Views;
 
 namespace PrismWeatherApp.Search
