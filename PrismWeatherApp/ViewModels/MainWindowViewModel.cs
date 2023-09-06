@@ -26,7 +26,15 @@ namespace PrismWeatherApp.ViewModels
             TemperatureStatic.CityName = CityStatic.name;
             TemperatureStatic.Latitiude = tmpTemperature.latitude;
             TemperatureStatic.Longitiude = tmpTemperature.longitude;
-            TemperatureStatic.Hourly = tmpTemperature.hourly;
+            for (var i = 0; i < tmpTemperature.hourly.time.Count; i++)
+            {
+                TemperatureHourlyConnect tmpTHC = new TemperatureHourlyConnect()
+                {
+                    time = tmpTemperature.hourly.time[i],
+                    temperature_2m = tmpTemperature.hourly.temperature_2m[i]
+                };
+                TemperatureStatic.Hourly.Add(tmpTHC);
+            }
         }
 
     }
