@@ -2,8 +2,8 @@
 {
     public class Temperature
     {
-        public double Latitiude { get; set; }
-        public double Longitiude { get; set; }
-        public TemperatureHourly Hourly { get; set; }
+        public float latitude { get; set; }
+        public float longitude { get; set; }
+        public TemperatureHourly hourly { get; set; }
     }
 }
