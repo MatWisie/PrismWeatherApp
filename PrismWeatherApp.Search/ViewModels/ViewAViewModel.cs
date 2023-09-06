@@ -3,7 +3,6 @@ using Prism.Mvvm;
 using PrismWeatherApp.Core;
 using PrismWeatherApp.Core.Interfaces;
 using PrismWeatherApp.Core.Models;
-using PrismWeatherApp.Search.Interfaces;
 using System.Collections.ObjectModel;
 
 namespace PrismWeatherApp.Search.ViewModels
@@ -34,9 +33,9 @@ namespace PrismWeatherApp.Search.ViewModels
             {
                 var tmpTemperature = _searchApiService.GetTemperature(SelectedCity.latitude, SelectedCity.longitude).Result;
                 TemperatureStatic.CityName = SelectedCity.name;
-                TemperatureStatic.Latitiude = tmpTemperature.Latitiude;
-                TemperatureStatic.Longitiude = tmpTemperature.Longitiude;
-                TemperatureStatic.Hourly = tmpTemperature.Hourly;
+                TemperatureStatic.Latitiude = tmpTemperature.latitude;
+                TemperatureStatic.Longitiude = tmpTemperature.longitude;
+                TemperatureStatic.Hourly = tmpTemperature.hourly;
 
             }
         }
