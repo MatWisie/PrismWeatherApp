@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PrismWeatherApp.Core\PrismWeatherApp.Core.csproj" />
+    <ProjectReference Include="..\PrismWeatherApp.HourlyTemperature\PrismWeatherApp.HourlyTemperature.csproj" />
     <ProjectReference Include="..\PrismWeatherApp.Menu\PrismWeatherApp.Menu.csproj" />
     <ProjectReference Include="..\PrismWeatherApp.Search\PrismWeatherApp.Search.csproj" />
     <ProjectReference Include="..\PrismWeatherApp.Temperature\PrismWeatherApp.Temperature.csproj" />

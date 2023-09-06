@@ -3,6 +3,7 @@ using Prism.Modularity;
 using Prism.Unity;
 using PrismWeatherApp.Core;
 using PrismWeatherApp.Core.Interfaces;
+using PrismWeatherApp.HourlyTemperature;
 using PrismWeatherApp.Menu;
 using PrismWeatherApp.Search;
 using PrismWeatherApp.Temperature;
@@ -31,6 +32,7 @@ namespace PrismWeatherApp
             moduleCatalog.AddModule<MenuModule>();
             moduleCatalog.AddModule<TemperatureModule>();
             moduleCatalog.AddModule<SearchModule>();
+            moduleCatalog.AddModule<HourlyTemperatureModule>();
         }
     }
 }
