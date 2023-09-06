@@ -31,11 +31,21 @@ namespace PrismWeatherApp.Search.ViewModels
         {
             if (SelectedCity != null)
             {
-                var tmpTemperature = _searchApiService.GetTemperature(SelectedCity.latitude, SelectedCity.longitude).Result;
+                Temperature tmpTemperature = _searchApiService.GetTemperature(SelectedCity.latitude, SelectedCity.longitude).Result;
                 TemperatureStatic.CityName = SelectedCity.name;
                 TemperatureStatic.Latitiude = tmpTemperature.latitude;
                 TemperatureStatic.Longitiude = tmpTemperature.longitude;
-                TemperatureStatic.Hourly = tmpTemperature.hourly;
+                TemperatureStatic.Hourly.Clear();
+                for (var i = 0; i < tmpTemperature.hourly.time.Count; i++)
+                {
+                    TemperatureHourlyConnect tmpTHC = new TemperatureHourlyConnect()
+                    {
+                        time = tmpTemperature.hourly.time[i],
+                        temperature_2m = tmpTemperature.hourly.temperature_2m[i]
+                    };
+                    TemperatureStatic.Hourly.Add(tmpTHC);
+                }
+
                 JsonServices.SaveJson(SelectedCity);
 
             }
