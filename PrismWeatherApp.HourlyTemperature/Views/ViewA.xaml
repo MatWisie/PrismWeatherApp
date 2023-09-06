@@ -9,5 +9,35 @@
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True" >
     <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Label Content="{Binding CityName}" Foreground="Red"/>
+            <ListView ItemsSource="{Binding Hourly}"
+                      Grid.Row="1"
+                      ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <Label Content="NEW TIME" />
+                            <Label HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Content="{Binding time}" />
+                            <Separator />
+                            <Label HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Content="{Binding temperature_2m}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
     </Grid>
 </UserControl>
