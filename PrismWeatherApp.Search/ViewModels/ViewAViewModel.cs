@@ -36,6 +36,7 @@ namespace PrismWeatherApp.Search.ViewModels
                 TemperatureStatic.Latitiude = tmpTemperature.latitude;
                 TemperatureStatic.Longitiude = tmpTemperature.longitude;
                 TemperatureStatic.Hourly = tmpTemperature.hourly;
+                JsonServices.SaveJson(SelectedCity);
 
             }
         }
